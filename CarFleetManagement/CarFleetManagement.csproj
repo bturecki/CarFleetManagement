@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-CarFleetManagement-A56DB0AF-7827-42A2-9A5D-C8BD64A5957E</UserSecretsId>
+    <UserSecretsId>aspnet-CarFleetManagement-9EC45E34-C73E-46B6-8BF7-FF14D99B5214</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
