@@ -1,7 +1,6 @@
 ﻿using CarFleetManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
 namespace CarFleetManagement.Controllers
 {
     public class HomeController : Controller
