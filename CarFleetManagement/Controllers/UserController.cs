@@ -1,6 +1,7 @@
 ﻿using CarFleetManagement.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static DataLibrary.BusinessLogic.PersonProcessor;
 
 namespace CarFleetManagement.Controllers
 {
@@ -9,7 +10,10 @@ namespace CarFleetManagement.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-            return View(new List<User>());
+            var list = new List<User>();
+            foreach (var item in LoadPeople())
+                list.Add(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email});
+            return View(list);
         }
 
         // GET: UserController/Details/5
@@ -29,14 +33,12 @@ namespace CarFleetManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                CreatePerson(collection["Name"], collection["Surname"], DateTime.Now, collection["Email"] );
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: UserController/Edit/5
