@@ -24,8 +24,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
+                <input asp-for="DateOfBirth" type="date" asp-format="{0:dd/MM/yyyy}" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
+                </label>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>

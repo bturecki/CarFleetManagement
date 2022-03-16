@@ -5,10 +5,9 @@ namespace DataLibrary.DataAccess
 {
     public class SqlDataAccess
     {
-        public static string GetConnectionString(string connectionName = "CarFleetManagement")
+        public static string GetConnectionString()
         {
             return @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=CarMgmtSystemDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
         }
 
         public static List<T> LoadData<T>(string sql)

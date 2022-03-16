@@ -11,9 +11,9 @@ namespace DataLibrary.BusinessLogic
 {
     public static class PersonProcessor
     {
-        public static int CreatePerson(string name, string surname, DateTime dateOfBirth, string email)
+        public static int CreatePerson(string name, string surname, DateTime dateOfBirth, string email, bool isAdmin)
         {
-            User data = new User() { Name = name, Surname = surname, DateOfBirth = dateOfBirth, Email = email, IsAdmin = false };
+            User data = new User() { Name = name, Surname = surname, DateOfBirth = dateOfBirth, Email = email, IsAdmin = isAdmin };
 
             string sql = @"insert into dbo.T_User (Name, Surname, DateOfBirth, Email, IsAdmin) values (@Name, @Surname, @DateOfBirth, @Email, @IsAdmin);";
 
@@ -23,7 +23,7 @@ namespace DataLibrary.BusinessLogic
         public static List<IUser> LoadPeople()
         {
             var returnList = new List<IUser>();
-            string sql = "select Id, Name, Surname, DateOfBirth from dbo.T_User;";
+            string sql = "select Id, Name, Surname, DateOfBirth, Email, IsAdmin from dbo.T_User;";
             foreach (var us in SqlDataAccess.LoadData<User>(sql))
                 returnList.Add(us);
             return returnList;
@@ -31,7 +31,7 @@ namespace DataLibrary.BusinessLogic
 
         public static int DeletePerson(int id)
         {
-            string sql = $"delete dbo.Person where id = {id};";
+            string sql = $"delete dbo.T_User where id = {id};";
 
             return SqlDataAccess.DeleteData(sql);
         }

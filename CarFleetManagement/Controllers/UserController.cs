@@ -10,10 +10,10 @@ namespace CarFleetManagement.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-            var list = new List<User>();
-            foreach (var item in LoadPeople())
-                list.Add(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email});
-            return View(list);
+             var list = new List<User>();
+             foreach (var item in LoadPeople())
+                 list.Add(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin});
+             return View(list);
         }
 
         // GET: UserController/Details/5
@@ -35,7 +35,7 @@ namespace CarFleetManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                CreatePerson(collection["Name"], collection["Surname"], DateTime.Now, collection["Email"] );
+                CreatePerson(collection["Name"], collection["Surname"], Convert.ToDateTime(collection["DateOfBirth"]), collection["Email"], collection["IsAdmin"].Contains("true"));
                 return RedirectToAction("Index");
             }
             return View();
@@ -65,22 +65,8 @@ namespace CarFleetManagement.Controllers
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: UserController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            DeletePerson(id);
+            return RedirectToAction("Index");
         }
     }
 }
