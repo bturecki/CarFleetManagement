@@ -61,5 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\T_User.sql" />
+    <Build Include="dbo\Tables\T_Car.sql" />
+    <Build Include="dbo\Tables\T_Car_Milage_Logs.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CarMgmtSystemDB.publish.xml" />
   </ItemGroup>
 </Project>
