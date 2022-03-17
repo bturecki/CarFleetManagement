@@ -14,5 +14,6 @@ namespace CarFleetManagement.Models
         public int YearOfProduction { get; set; }
         [Required(ErrorMessage = "You need to enter the milage of the car")]
         public int Milage { get; set; }
+        public int Id { get; set; }
     }
 }

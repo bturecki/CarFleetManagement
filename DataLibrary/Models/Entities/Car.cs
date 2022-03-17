@@ -6,5 +6,6 @@
         public string Model { get; internal set; }
         public int YearOfProduction { get; internal set; }
         public int Milage { get; internal set; }
+        public int Id { get; internal set; }
     }
 }

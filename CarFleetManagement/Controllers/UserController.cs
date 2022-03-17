@@ -19,7 +19,8 @@ namespace CarFleetManagement.Controllers
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var item = LoadPeople().Where(x => x.Id == id).Single();
+            return View(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin });
         }
 
         // GET: UserController/Create
@@ -36,7 +37,7 @@ namespace CarFleetManagement.Controllers
             if (ModelState.IsValid)
             {
                 CreatePerson(collection["Name"], collection["Surname"], Convert.ToDateTime(collection["DateOfBirth"]), collection["Email"], collection["IsAdmin"].Contains("true"));
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -66,7 +67,7 @@ namespace CarFleetManagement.Controllers
         public ActionResult Delete(int id)
         {
             DeletePerson(id);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -12,14 +12,15 @@ namespace CarFleetManagement.Controllers
         {
             var list = new List<Car>();
             foreach (var item in LoadCars())
-                list.Add(new Car() { Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction });
+                list.Add(new Car() { Id = item.Id, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction });
             return View(list);
         }
 
         // GET: CarController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var item = LoadCars().Where(x => x.Id == id).Single();
+            return View(new Car() { Id = item.Id, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction });
         }
 
         // GET: CarController/Create
@@ -36,7 +37,7 @@ namespace CarFleetManagement.Controllers
             if (ModelState.IsValid)
             {
                 CreateCar(collection["Make"], collection["Model"], Convert.ToInt32(collection["YearOfProduction"]), Convert.ToInt32(collection["Milage"]));
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -65,22 +66,9 @@ namespace CarFleetManagement.Controllers
         // GET: CarController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            DeleteCar(id);
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: CarController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
