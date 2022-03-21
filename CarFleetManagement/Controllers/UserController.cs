@@ -8,19 +8,24 @@ namespace CarFleetManagement.Controllers
     public class UserController : Controller
     {
         // GET: UserController
+        User GetUser(int id)
+        {
+            var item = LoadPeople().Where(x => x.Id == id).Single();
+            return new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin };
+
+        }
         public ActionResult Index()
         {
              var list = new List<User>();
              foreach (var item in LoadPeople())
-                 list.Add(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin});
+                 list.Add(GetUser(item.Id));
              return View(list);
         }
 
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            var item = LoadPeople().Where(x => x.Id == id).Single();
-            return View(new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin });
+            return View(GetUser(id));
         }
 
         // GET: UserController/Create
@@ -45,7 +50,7 @@ namespace CarFleetManagement.Controllers
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(GetUser(id));
         }
 
         // POST: UserController/Edit/5
