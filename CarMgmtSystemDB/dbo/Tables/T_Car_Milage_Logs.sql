@@ -3,5 +3,5 @@
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [CarId] INT NOT NULL, 
     [milage] INT NOT NULL, 
-    [i_date] DATE NOT NULL DEFAULT NOW()
+    [i_date] DATE NOT NULL 
 )

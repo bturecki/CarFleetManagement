@@ -63,6 +63,7 @@
     <Build Include="dbo\Tables\T_User.sql" />
     <Build Include="dbo\Tables\T_Car.sql" />
     <Build Include="dbo\Tables\T_Car_Milage_Logs.sql" />
+    <Build Include="dbo\Tables\T_Car_Of_User.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CarMgmtSystemDB.publish.xml" />

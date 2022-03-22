@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[T_Cars]
+﻿CREATE TABLE [dbo].[T_Car]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Make] NVARCHAR(50) NOT NULL, 
