@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CarFleetManagement.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarFleetManagement.Controllers
@@ -8,7 +9,7 @@ namespace CarFleetManagement.Controllers
         // GET: CarOfUserController
         public ActionResult Index()
         {
-            return View();
+            return View(new List<CarOfUser>());
         }
 
         // GET: CarOfUserController/Details/5
