@@ -2,11 +2,11 @@
 {
     public class CarOfUser
     {
-        int Id { get; set; }
-        int UserId { get; set; }
-        int CarId { get; set; }
-        string UserFullName { get; set; }
-        string CarFullName { get; set; }
-        int CarMilage { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int CarId { get; set; }
+        public string UserFullName { get; set; }
+        public string CarFullName { get; set; }
+        public int CarMilage { get; set; }
     }
 }

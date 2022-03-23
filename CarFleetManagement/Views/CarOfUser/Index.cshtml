@@ -12,6 +12,15 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarMilage)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -19,7 +28,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.DisplayFor(modelItem => item.UserFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarMilage)
+            </td>
+            <td>
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
