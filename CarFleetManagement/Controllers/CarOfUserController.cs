@@ -12,12 +12,6 @@ namespace CarFleetManagement.Controllers
             return View(new List<CarOfUser>());
         }
 
-        // GET: CarOfUserController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: CarOfUserController/Create
         public ActionResult Create()
         {
