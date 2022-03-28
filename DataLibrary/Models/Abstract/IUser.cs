@@ -9,7 +9,7 @@ namespace DataLibrary.Models.Abstract
 {
     public interface IUser
     {
-        int Id { get; }
+        int UserId { get; }
         public string Name { get; }
         public string Surname { get; }
         public string Email { get; }

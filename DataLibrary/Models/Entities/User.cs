@@ -8,7 +8,7 @@ namespace DataLibrary.Models.Entities
 {
     internal class User : Abstract.IUser
     {
-        public int Id { get; internal set; }
+        public int UserId { get; internal set; }
 
         public string Name { get; internal set; }
 

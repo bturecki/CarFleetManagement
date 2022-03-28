@@ -12,6 +12,6 @@ namespace DataLibrary.Models.Abstract
         string Model { get; }
         int YearOfProduction { get; }
         int Milage { get; }
-        int Id { get; }
+        int CarId { get; }
     }
 }

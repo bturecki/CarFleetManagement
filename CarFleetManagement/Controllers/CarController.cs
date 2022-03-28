@@ -9,8 +9,8 @@ namespace CarFleetManagement.Controllers
     {
         Car GetCar(int id)
         {
-            var item = LoadCars().Where(x => x.Id == id).Single();
-            return new Car() { Id = item.Id, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction };
+            var item = LoadCars().Where(x => x.CarId == id).Single();
+            return new Car() { Id = item.CarId, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction };
 
         }
         // GET: CarController
@@ -18,7 +18,7 @@ namespace CarFleetManagement.Controllers
         {
             var list = new List<Car>();
             foreach (var item in LoadCars())
-                list.Add(GetCar(item.Id));
+                list.Add(GetCar(item.CarId));
             return View(list);
         }
 

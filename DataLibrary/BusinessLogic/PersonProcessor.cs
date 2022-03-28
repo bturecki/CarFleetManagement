@@ -23,7 +23,7 @@ namespace DataLibrary.BusinessLogic
         public static List<IUser> LoadPeople()
         {
             var returnList = new List<IUser>();
-            string sql = "select Id, Name, Surname, DateOfBirth, Email, IsAdmin from dbo.T_User;";
+            string sql = "select UserId, Name, Surname, DateOfBirth, Email, IsAdmin from dbo.T_User;";
             foreach (var us in SqlDataAccess.LoadData<User>(sql))
                 returnList.Add(us);
             return returnList;
@@ -31,7 +31,7 @@ namespace DataLibrary.BusinessLogic
 
         public static int DeletePerson(int id)
         {
-            string sql = $"delete dbo.T_User where id = {id};";
+            string sql = $"delete dbo.T_User where UserId = {id};";
 
             return SqlDataAccess.DeleteData(sql);
         }

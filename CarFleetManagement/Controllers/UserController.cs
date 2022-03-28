@@ -10,15 +10,15 @@ namespace CarFleetManagement.Controllers
         // GET: UserController
         User GetUser(int id)
         {
-            var item = LoadPeople().Where(x => x.Id == id).Single();
-            return new User() { Id = item.Id, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin };
+            var item = LoadPeople().Where(x => x.UserId == id).Single();
+            return new User() { Id = item.UserId, Name = item.Name, Surname = item.Surname, DateOfBirth = item.DateOfBirth, Email = item.Email, IsAdmin = item.IsAdmin };
 
         }
         public ActionResult Index()
         {
              var list = new List<User>();
              foreach (var item in LoadPeople())
-                 list.Add(GetUser(item.Id));
+                 list.Add(GetUser(item.UserId));
              return View(list);
         }
 

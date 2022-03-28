@@ -23,7 +23,7 @@ namespace DataLibrary.BusinessLogic
         public static List<ICar> LoadCars()
         {
             var returnList = new List<ICar>();
-            string sql = "select Id, Make, Model, YearOfProduction from dbo.T_Car;";
+            string sql = "select CarId, Make, Model, YearOfProduction from dbo.T_Car;";
             foreach (var us in SqlDataAccess.LoadData<Car>(sql))
                 returnList.Add(us);
             return returnList;
@@ -31,7 +31,7 @@ namespace DataLibrary.BusinessLogic
 
         public static int DeleteCar(int id)
         {
-            string sql = $"delete dbo.T_Car where id = {id};";
+            string sql = $"delete dbo.T_Car where CarId = {id};";
 
             return SqlDataAccess.DeleteData(sql);
         }
