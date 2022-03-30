@@ -11,7 +11,6 @@ namespace CarFleetManagement.Controllers
         {
             var item = LoadCars().Where(x => x.CarId == id).Single();
             return new Car() { Id = item.CarId, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction };
-
         }
         // GET: CarController
         public ActionResult Index()

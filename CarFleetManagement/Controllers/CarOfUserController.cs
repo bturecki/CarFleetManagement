@@ -1,15 +1,23 @@
 ﻿using CarFleetManagement.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static DataLibrary.BusinessLogic.CarOfUserProcessor;
 
 namespace CarFleetManagement.Controllers
 {
     public class CarOfUserController : Controller
     {
+        CarOfUser GetCarOfUser(int id)
+        {
+            var item = LoadCars().Where(x => x.CarId == id).Single();
+            return new CarOfUser(item.RowId, item.UserId, item.CarId, $"{item.Name} {item.Surname}", $"{item.Make} {item.Model} {item.YearOfProduction}", 0, item.Email);
+        }
         // GET: CarOfUserController
         public ActionResult Index()
         {
-            return View(new List<CarOfUser>());
+            var list = new List<CarOfUser>();
+            foreach (var item in LoadCars())
+                list.Add(GetCarOfUser(item.CarId));
+            return View(list);
         }
 
         // GET: CarOfUserController/Create
