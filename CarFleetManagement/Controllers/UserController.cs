@@ -7,7 +7,6 @@ namespace CarFleetManagement.Controllers
 {
     public class UserController : Controller
     {
-        // GET: UserController
         User GetUser(int id)
         {
             var item = LoadPeople().Where(x => x.UserId == id).Single();
@@ -22,19 +21,16 @@ namespace CarFleetManagement.Controllers
              return View(list);
         }
 
-        // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
             return View(GetUser(id));
         }
 
-        // GET: UserController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -47,13 +43,11 @@ namespace CarFleetManagement.Controllers
             return View();
         }
 
-        // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
             return View(GetUser(id));
         }
 
-        // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -68,7 +62,6 @@ namespace CarFleetManagement.Controllers
             }
         }
 
-        // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
             DeletePerson(id);

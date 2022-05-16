@@ -11,7 +11,7 @@ namespace CarFleetManagement.Controllers
             var item = LoadCars().Where(x => x.CarId == id).Single();
             return new CarOfUser(item.RowId, item.UserId, item.CarId, $"{item.Name} {item.Surname}", $"{item.Make} {item.Model} {item.YearOfProduction}", 0, item.Email);
         }
-        // GET: CarOfUserController
+
         public ActionResult Index()
         {
             var list = new List<CarOfUser>();
@@ -20,13 +20,11 @@ namespace CarFleetManagement.Controllers
             return View(list);
         }
 
-        // GET: CarOfUserController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CarOfUserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -41,25 +39,11 @@ namespace CarFleetManagement.Controllers
             }
         }
 
-        // GET: CarOfUserController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            DeleteCarOfUser(id);
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: CarOfUserController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

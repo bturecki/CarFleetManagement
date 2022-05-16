@@ -12,7 +12,7 @@ namespace CarFleetManagement.Controllers
             var item = LoadCars().Where(x => x.CarId == id).Single();
             return new Car() { Id = item.CarId, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction };
         }
-        // GET: CarController
+
         public ActionResult Index()
         {
             var list = new List<Car>();
@@ -21,19 +21,16 @@ namespace CarFleetManagement.Controllers
             return View(list);
         }
 
-        // GET: CarController/Details/5
         public ActionResult Details(int id)
         {
             return View(GetCar(id));
         }
 
-        // GET: CarController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CarController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -46,13 +43,11 @@ namespace CarFleetManagement.Controllers
             return View();
         }
 
-        // GET: CarController/Edit/5
         public ActionResult Edit(int id)
         {
             return View(GetCar(id));
         }
 
-        // POST: CarController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,7 +62,6 @@ namespace CarFleetManagement.Controllers
             }
         }
 
-        // GET: CarController/Delete/5
         public ActionResult Delete(int id)
         {
             DeleteCar(id);
