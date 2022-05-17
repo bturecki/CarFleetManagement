@@ -11,6 +11,14 @@ namespace DataLibrary.BusinessLogic
 {
     public class CarOfUserProcessor
     {
+        public static int CreateCarOfUser(int carId, int userId)
+        {
+            CarOfUser data = new CarOfUser() { CarId = carId, UserId = userId};
+
+            string sql = @"insert into dbo.T_Car_Of_user (UserId, CarId) values (@UserId, @CarId);";
+
+            return SqlDataAccess.SaveData(sql, data);
+        }
         public static List<ICarOfUser> LoadCars()
         {
             var returnList = new List<ICarOfUser>();

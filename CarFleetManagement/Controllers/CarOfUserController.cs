@@ -29,14 +29,12 @@ namespace CarFleetManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
             {
+                CreateCarOfUser(Convert.ToInt32(collection["CarId"]), Convert.ToInt32(collection["UserId"]));
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult Delete(int id)
