@@ -23,7 +23,7 @@ namespace DataLibrary.BusinessLogic
         public static List<ICar> LoadCars()
         {
             var returnList = new List<ICar>();
-            string sql = "select CarId, Make, Model, YearOfProduction from dbo.T_Car;";
+            string sql = "select t.CarId, t.Make, t.Model, t.YearOfProduction, max(m.milage) Milage from dbo.T_Car t left join dbo.T_Car_Milage_Logs m on t.CarId = m.CarId group by t.CarId, t.Make, t.Model, t.YearOfProduction;";
             foreach (var us in SqlDataAccess.LoadData<Car>(sql))
                 returnList.Add(us);
             return returnList;
