@@ -52,14 +52,8 @@ namespace CarFleetManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            UpdateCar(id, collection["Make"], collection["Model"], Convert.ToInt32(collection["YearOfProduction"]), Convert.ToInt32(collection["Milage"]));
+            return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Delete(int id)

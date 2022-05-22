@@ -19,6 +19,13 @@ namespace DataLibrary.BusinessLogic
 
             return SqlDataAccess.SaveData(sql, data);
         }
+        public static int UpdateCar(int id, string make, string model, int yearOfProduction, int milage)
+        {
+            char br = Convert.ToChar("'");
+            string sql = $"update dbo.T_Car set make = {br + make + br}, model = {br + model + br}, YearOfProduction = {yearOfProduction} where CarId = {id};";
+
+            return SqlDataAccess.UpdateData(sql);
+        }
 
         public static List<ICar> LoadCars()
         {

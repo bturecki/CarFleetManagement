@@ -31,5 +31,12 @@ namespace DataLibrary.DataAccess
                 return connection.Execute(sql);
             }
         }
+        public static int UpdateData(string sql)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GetConnectionString()))
+            {
+                return connection.Execute(sql);
+            }
+        }
     }
 }
