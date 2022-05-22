@@ -1,11 +1,6 @@
 ﻿using DataLibrary.DataAccess;
 using DataLibrary.Models.Abstract;
 using DataLibrary.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLibrary.BusinessLogic
 {
@@ -24,9 +19,23 @@ namespace DataLibrary.BusinessLogic
             char br = Convert.ToChar("'");
             string sql = $"update dbo.T_Car set make = {br + make + br}, model = {br + model + br}, YearOfProduction = {yearOfProduction} where CarId = {id};";
 
-            return SqlDataAccess.UpdateData(sql);
-        }
+            var updRes = SqlDataAccess.UpdateData(sql);
 
+            var car = LoadCars().Where(x => x.CarId == id && x.Milage < milage).SingleOrDefault();
+
+            if (car != default)
+                InsertCarMilage(id, milage);
+
+            return updRes;
+        }
+        private static int InsertCarMilage(int carId, int milage)
+        {
+            Car data = new Car() { CarId = carId, Milage = milage, IDate = DateTime.Now };
+
+            string sql = @"insert into dbo.T_Car_Milage_Logs (CarId, milage) values (@CarId, @Milage);";
+
+            return SqlDataAccess.SaveData(sql, data);
+        }
         public static List<ICar> LoadCars()
         {
             var returnList = new List<ICar>();

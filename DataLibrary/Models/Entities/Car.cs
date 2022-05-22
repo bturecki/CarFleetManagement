@@ -7,5 +7,6 @@
         public int YearOfProduction { get; internal set; }
         public int Milage { get; internal set; }
         public int CarId { get; internal set; }
+        public DateTime IDate { get; internal set; }
     }
 }
