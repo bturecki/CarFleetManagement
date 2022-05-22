@@ -12,7 +12,13 @@ namespace DataLibrary.BusinessLogic
 
             string sql = @"insert into dbo.T_Car (Make, Model, YearOfProduction) values (@Make, @Model, @YearOfProduction);";
 
-            return SqlDataAccess.SaveData(sql, data);
+            var res = SqlDataAccess.SaveData(sql, data);
+
+            var insertedCar = LoadCars().Select(x => x.CarId).Max();
+
+            InsertCarMilage(insertedCar, milage);
+
+            return res;
         }
         public static int UpdateCar(int id, string make, string model, int yearOfProduction, int milage)
         {
