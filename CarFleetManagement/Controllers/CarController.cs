@@ -5,7 +5,7 @@ using static DataLibrary.BusinessLogic.CarProcessor;
 
 namespace CarFleetManagement.Controllers
 {
-    public class CarController : Controller
+    public class CarController : MyBaseController
     {
         Car GetCar(int id)
         {

@@ -5,7 +5,7 @@ using static DataLibrary.BusinessLogic.PersonProcessor;
 
 namespace CarFleetManagement.Controllers
 {
-    public class UserController : Controller
+    public class UserController : MyBaseController
     {
         User GetUser(int id)
         {

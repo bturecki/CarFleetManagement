@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 namespace CarFleetManagement.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MyBaseController
     {
         private readonly ILogger<HomeController> _logger;
 
