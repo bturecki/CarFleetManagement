@@ -1,4 +1,5 @@
 ﻿using CarFleetManagement.Models;
+using DataLibrary.Models.Abstract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static DataLibrary.BusinessLogic.CarProcessor;
@@ -9,14 +10,14 @@ namespace CarFleetManagement.Controllers
     {
         Car GetCar(int id)
         {
-            var item = LoadCars().Where(x => x.CarId == id).Single();
+            ICar item = (LoadCars(ViewBag.IsAdmin, ViewBag.Email) as List<ICar>).Where(x => x.CarId == id).Single();
             return new Car() { Id = item.CarId, Make = item.Make, Model = item.Model, Milage = item.Milage, YearOfProduction = item.YearOfProduction };
         }
 
         public ActionResult Index()
         {
             var list = new List<Car>();
-            foreach (var item in LoadCars())
+            foreach (ICar item in LoadCars(ViewBag.IsAdmin, ViewBag.Email))
                 list.Add(GetCar(item.CarId));
             return View(list);
         }
