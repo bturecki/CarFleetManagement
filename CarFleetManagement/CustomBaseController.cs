@@ -9,6 +9,7 @@ namespace CarFleetManagement
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             ViewBag.IsAdmin = LoadPeople().Where(x => x.Email == User.Identity.Name).SingleOrDefault()?.IsAdmin;
+            ViewBag.Email = LoadPeople().Where(x => x.Email == User.Identity.Name).SingleOrDefault()?.Email;
             base.OnActionExecuting(filterContext);
         }
     }

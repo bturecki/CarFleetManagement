@@ -14,7 +14,7 @@ namespace DataLibrary.BusinessLogic
 
             var res = SqlDataAccess.SaveData(sql, data);
 
-            var insertedCar = LoadCars().Select(x => x.CarId).Max();
+            var insertedCar = LoadCars(true, string.Empty).Select(x => x.CarId).Max();
 
             InsertCarMilage(insertedCar, milage);
 
@@ -27,7 +27,7 @@ namespace DataLibrary.BusinessLogic
 
             var updRes = SqlDataAccess.UpdateData(sql);
 
-            var car = LoadCars().Where(x => x.CarId == id && x.Milage < milage).SingleOrDefault();
+            var car = LoadCars(true, string.Empty).Where(x => x.CarId == id && x.Milage < milage).SingleOrDefault();
 
             if (car != default)
                 InsertCarMilage(id, milage);
@@ -42,10 +42,14 @@ namespace DataLibrary.BusinessLogic
 
             return SqlDataAccess.SaveData(sql, data);
         }
-        public static List<ICar> LoadCars()
+        public static List<ICar> LoadCars(bool isAdmin, string userEmail)
         {
             var returnList = new List<ICar>();
-            string sql = "select t.CarId, t.Make, t.Model, t.YearOfProduction, max(m.milage) Milage from dbo.T_Car t left join dbo.T_Car_Milage_Logs m on t.CarId = m.CarId group by t.CarId, t.Make, t.Model, t.YearOfProduction;";
+            string sql = string.Empty;
+            if(isAdmin)
+                sql = "select t.CarId, t.Make, t.Model, t.YearOfProduction, max(m.milage) Milage from dbo.T_Car t left join dbo.T_Car_Milage_Logs m on t.CarId = m.CarId group by t.CarId, t.Make, t.Model, t.YearOfProduction;";
+            else
+                sql = $"select t.CarId, t.Make, t.Model, t.YearOfProduction, max(m.milage) Milage from dbo.T_Car t inner join dbo.T_Car_Of_User cu on cu.CarId = t.CarId inner join dbo.T_User us on us.UserId = cu.UserId and us.Email = {"'" + userEmail + "'"} left join dbo.T_Car_Milage_Logs m on t.CarId = m.CarId group by t.CarId, t.Make, t.Model, t.YearOfProduction;";
             foreach (var us in SqlDataAccess.LoadData<Car>(sql))
                 returnList.Add(us);
             return returnList;
