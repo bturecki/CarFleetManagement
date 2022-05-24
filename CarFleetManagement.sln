@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLibrary", "DataLibrary\
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CarMgmtSystemDB", "CarMgmtSystemDB\CarMgmtSystemDB.sqlproj", "{51575172-B095-4FFF-82BE-C7462C6D56DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFleetManagement", "CarFleetManagement\CarFleetManagement.csproj", "{110566D0-E909-48E0-A2EF-3EED4230495C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFleetManagement", "CarFleetManagement\CarFleetManagement.csproj", "{110566D0-E909-48E0-A2EF-3EED4230495C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFleetManagement.IntegrationsTests", "CarFleetManagement.IntegrationsTests\CarFleetManagement.IntegrationsTests.csproj", "{8CB5694D-9470-47D7-AA71-1186407D7AF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{110566D0-E909-48E0-A2EF-3EED4230495C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{110566D0-E909-48E0-A2EF-3EED4230495C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{110566D0-E909-48E0-A2EF-3EED4230495C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB5694D-9470-47D7-AA71-1186407D7AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB5694D-9470-47D7-AA71-1186407D7AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB5694D-9470-47D7-AA71-1186407D7AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB5694D-9470-47D7-AA71-1186407D7AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
