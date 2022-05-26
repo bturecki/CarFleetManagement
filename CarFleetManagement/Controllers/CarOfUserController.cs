@@ -9,7 +9,7 @@ namespace CarFleetManagement.Controllers
         CarOfUser GetCarOfUser(int id)
         {
             var item = LoadCars().Where(x => x.CarId == id).Single();
-            return new CarOfUser(item.RowId, item.UserId, item.CarId, $"{item.Name} {item.Surname}", $"{item.Make} {item.Model} {item.YearOfProduction}", 0, item.Email);
+            return new CarOfUser(item.RowId, item.UserId, item.CarId, $"{item.Name} {item.Surname}", $"{item.Make} {item.Model} {item.YearOfProduction}", item.Milage, item.Email);
         }
 
         public ActionResult Index()

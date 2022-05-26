@@ -10,6 +10,7 @@ namespace CarFleetManagement
         {
             ViewBag.IsAdmin = LoadPeople().Where(x => x.Email == User.Identity.Name).SingleOrDefault()?.IsAdmin;
             ViewBag.Email = LoadPeople().Where(x => x.Email == User.Identity.Name).SingleOrDefault()?.Email;
+            ViewBag.IsUserActive = LoadPeople().Where(x => x.Email == User.Identity.Name).SingleOrDefault() != default;
             base.OnActionExecuting(filterContext);
         }
     }

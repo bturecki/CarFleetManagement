@@ -53,7 +53,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
 
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && Convert.ToBoolean(@ViewData["IsUserActive"]) == true)
                         {
                             @if (Convert.ToBoolean(@ViewData["IsAdmin"]) == true)
                             {
