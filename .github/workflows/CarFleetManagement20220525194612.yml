@@ -63,6 +63,7 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         publish-profile: ${{ secrets.CarFleetManagement20220525194612_ffd5 }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Azure Login
       uses: azure/login@v1
       with:
