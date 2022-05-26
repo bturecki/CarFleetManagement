@@ -3,6 +3,18 @@
     "apis1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/CarFleetManagementapi/apis/CarFleetManagement",
       "type": "apis.azure"
+    },
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/carmgmtsystemdbdbserver/databases/CarMgmtSystemDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:CarFleetManagement"
+    },
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/carmgmtsystemdbdbserver/databases/AuthenticationDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection"
     }
   }
 }
