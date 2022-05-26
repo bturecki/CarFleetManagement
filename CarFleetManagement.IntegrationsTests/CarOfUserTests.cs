@@ -17,7 +17,7 @@ namespace CarFleetManagement.IntegrationsTests
             Assert.That(_list, Is.Not.Null);
         }
         [Test]
-        public void Add_Wrong_WrongCarOfUser_ShouldThrowException()
+        public void Add_Wrong_CarOfUser_ShouldThrowException()
         {
             Assert.Throws<SqlException>(() => DataLibrary.BusinessLogic.CarOfUserProcessor.CreateCarOfUser(-1, -1));
         }
