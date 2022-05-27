@@ -7,7 +7,7 @@ namespace DataLibrary.DataAccess
     {
         public static string GetConnectionString()
         {
-            return @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=CarMgmtSystemDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            return @"Server=tcp:carfleetmanagementdb.database.windows.net,1433;Initial Catalog=CarFleetManagement_db;Persist Security Info=False;User ID=Radek123!;Password=TrudneHaslo123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
         public static List<T> LoadData<T>(string sql)
